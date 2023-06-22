@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux"
 import { setActivePage } from "../features/NavigationSlice"
 
 const Cart = () => {
+<<<<<<< HEAD
     useEffect(() => {
         handlePageChange()
       
@@ -23,6 +24,23 @@ const Cart = () => {
             <Footer />
         </>
     )
+=======
+  useEffect(() => {
+    handlePageChange()
+
+  }, [])
+  const dispatch = useDispatch()
+  const handlePageChange = () => {
+    dispatch(setActivePage('cart'))
+  }
+  return (
+    <div className="bg-slate-100">
+      <Header />
+      <ProductCart />
+      <Footer />
+    </div>
+  )
+>>>>>>> master
 }
 
 export default Cart

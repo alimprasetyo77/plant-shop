@@ -15,7 +15,7 @@ const ProductDetail = () => {
     dispatch(setActivePage('plants'))
   }
   return (
-    <div >
+    <div className='absolute overflow-x-hidden'>
       <Header />
       <Product />
       <Footer />

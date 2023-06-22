@@ -10,25 +10,25 @@ import { useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { setActivePage } from "../features/NavigationSlice"
 const Home = () => {
-    useEffect(() => {
-      handlePageChange()
-    
-    }, [])
-    const dispatch = useDispatch()
-    const handlePageChange = () => {
-        dispatch(setActivePage('home'))
-    }
-    return (
-        <div className="overflow-hidden ">
-            <HeaderHome/>
-            <Products />
-            <Story />
-            <FeedBack />
-            <GiftCard />
-            <Benefit />
-            <Footer />
-        </div>
-    )
+  useEffect(() => {
+    handlePageChange()
+
+  }, [])
+  const dispatch = useDispatch()
+  const handlePageChange = () => {
+    dispatch(setActivePage('home'))
+  }
+  return (
+    <div className="overflow-x-hidden ">
+      <HeaderHome />
+      <Products />
+      <Story />
+      <FeedBack />
+      <GiftCard />
+      <Benefit />
+      <Footer />
+    </div>
+  )
 }
 
 export default Home

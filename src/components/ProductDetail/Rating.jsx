@@ -8,7 +8,6 @@ const Rating = ({setLength}) => {
   const [reviews, setReviews] = useState([])
   const [rating, setRating] = useState(0)
   const [alert, setAlert] = useState(false)
-
   useEffect(() => {
     fetchData()
   }, [])
@@ -17,7 +16,7 @@ const Rating = ({setLength}) => {
     setReviews(JSON.parse(localStorage.getItem('reviews')))
   }
   const handleReview = (e) => {
-    e.preventDefault()
+    // e.preventDefault()
     const newItem = {
       review: e.target[0].value,
       rating: rating,

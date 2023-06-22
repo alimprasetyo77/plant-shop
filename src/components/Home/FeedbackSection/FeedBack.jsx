@@ -10,7 +10,7 @@ const FeedBack = () => {
                 <div className="w-10 h-px bg-orange-500 my-4 "></div>
             </div>
 
-            <div className="text-center max-w-xs md:max-w-sm lg:max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <div className="text-center max-w-xs md:max-w-sm lg:max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4">
                 {data.Feedback.map((data, index) => (
                     <Card key={index}>
                         <Card.summary className={'items-center gap-y-6 pt-6'}>

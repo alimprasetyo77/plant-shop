@@ -1,27 +1,28 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react"
+import ContactContent from "../components/Contact/ContactContent"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
-import Products from "../components/Shop/Products"
 import { useDispatch } from "react-redux"
-import { setActivePage } from "../features/NavigationSlice"
+import { setActivePage } from '../features/NavigationSlice';
 
-const Shop = () => {
+
+const Contact = () => {
   useEffect(() => {
     handlePageChange()
 
   }, [])
   const dispatch = useDispatch()
   const handlePageChange = () => {
-    dispatch(setActivePage('plants'))
+    dispatch(setActivePage('contact'))
   }
   return (
-    <div className="bg-slate-100/70">
+    <div>
       <Header />
-      <Products />
+      <ContactContent />
       <Footer />
     </div>
   )
 }
 
-export default Shop
+export default Contact
