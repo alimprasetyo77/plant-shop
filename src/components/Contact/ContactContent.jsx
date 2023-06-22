@@ -5,10 +5,10 @@ import Button from '../Button'
 
 const ContactContent = () => {
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row items-center max-w-[1700px] gap-y-12 lg:gap-y-0 mx-auto py-16 font-Roboto overflow-hidden">
+    <div className="min-h-screen flex flex-col lg:flex-row items-center max-w-[1700px] gap-y-12 lg:gap-y-0 mx-auto font-Roboto overflow-hidden py-8 px-0 xl:px-40">
       {/* left Component */}
       <div className="w-full lg:w-1/2 flex flex-col gap-y-6 md:gap-y-10 border-r border-black/10 px-10 md:px-16">
-        <h1 className='text-4xl md:text-7xl font-bold tracking-tighter'>Get In Touch</h1>
+        <h1 className='text-4xl xl:text-6xl font-bold tracking-tighter'>Get In Touch</h1>
         <p>Sit vulputate faucibus eget eget scelerisque faucibus malesuada nullam mollis ut montes, dui scelerisque ornare.</p>
         <div className="flex items-start gap-x-4">
           <MdLocationOn className='text-2xl text-[#FF5100]' />
@@ -45,7 +45,7 @@ const ContactContent = () => {
 
       {/* Right Component */}
       <div className='w-full lg:w-1/2 flex flex-col gap-y-8 px-10 lg:px-24 py-8'>
-        <h3 className='text-4xl font-bold tracking-tighter'>Drop us a line or two</h3>
+        <h3 className='text-3xl lg:text-4xl font-bold tracking-tighter'>Drop us a line or two</h3>
         <div className='flex flex-col gap-y-2'>
           <label className='font-semibold'>Name</label>
           <input type="text" className='p-3 border border-black/20 text-black/70 bg-white/50 rounded focus:bg-transparent outline-none ' placeholder='Full name' />

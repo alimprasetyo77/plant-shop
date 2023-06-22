@@ -3,7 +3,7 @@
 import { useEffect,  useState } from 'react'
 import { AiFillStar } from 'react-icons/ai'
 import Button from '../Button'
-import Alert from './Alert'
+import DangerAlert from './DangerAlert'
 const Rating = ({setLength}) => {
   const [reviews, setReviews] = useState([])
   const [rating, setRating] = useState(0)
@@ -63,7 +63,7 @@ const Rating = ({setLength}) => {
         <p className='text-black/60 '>There are no reviews yet.</p>
       }
       <div className="flex flex-col p-6 gap-4 shadow-md text-black/70 border border-gray-900/20">
-      {alert && <Alert />}
+      {alert && <DangerAlert />}
         <h1 className="text-xl font-medium ">Add Review</h1>
         <span className='-mt-2'>Your email address will not be published. Required fields are marked *</span>
         <form onSubmit={handleReview} className='space-y-4'>

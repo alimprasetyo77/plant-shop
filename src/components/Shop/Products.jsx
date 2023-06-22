@@ -16,7 +16,7 @@ const Products = () => {
   const [datas, setDatas] = useState([])
   const [sortName, setSortName] = useState('')
   const [loading, setLoading] = useState(false)
-  const [totalItems, setTotalItems] = useState(data.totalItems) // 31
+  const [totalItems, setTotalItems] = useState(data.totalItems) // 30
   const [currentPage, setCurrentPage] = useState(1)
   const perPage = data.perPage // 10
 
@@ -26,14 +26,23 @@ const Products = () => {
       setLoading(false)
       if (!sortName) return fetchAllData({ currentPage, perPage, data, setDatas })
       if (sortName == 'default') return fetchAllData({ currentPage, perPage, data, setDatas })
-      if (sortName == 'popularity') return handleSortPopularity({ data, currentPage, perPage, setDatas, setTotalItems })
+      if (sortName == 'popularity') return handleSortPopularity({ data, currentPage, perPage, setDatas, setTotalItems,setCurrentPage })
       if (sortName == 'ratingaverage') return handleSortAverage({ data, setDatas, setTotalItems, currentPage, perPage })
       if (sortName == 'latest') return sortLatestData({ currentPage, perPage, data, setDatas, setTotalItems })
       if (sortName == 'lowtohigh') return handleLowToHigh({ data, currentPage, perPage, setDatas, setTotalItems })
       if (sortName == 'hightolow') return handleHighToLow({ data, currentPage, perPage, setDatas, setTotalItems })
     }, 500);
+
   }, [currentPage, sortName])
 
+  useEffect(() => {
+    resetCurrentPage()
+
+  }, [sortName])
+  
+  const resetCurrentPage = () => {
+    setCurrentPage(1)
+  }
   const handleAddToCart = (item) => {
     dispath(addToCart(item))
   }
@@ -46,8 +55,8 @@ const Products = () => {
         <Breadcrumb page={currentPage} />
         <div className="flex flex-col md:flex-row md:items-center justify-between space-y-4">
           <span className="text-[#575250]">Showing {(currentPage - 1) * perPage} - {((currentPage - 1) * perPage) + perPage} of {totalItems} result</span>
-          <select id="countries" className="bg-gray-50 border border-gray-300 text-[#666666] text-sm block w-52 py-3 px-4 rounded outline-none" onChange={(e) => setSortName(e.target.value)}>
-            <option value="default" selected >Default Sorting</option>
+          <select id="countries" className="bg-gray-50 border border-gray-300 text-[#666666] text-sm block w-52 py-3 px-4 rounded outline-none" onChange={(e) => setSortName(e.target.value)} >
+            <option value="default" selected onChange={() => setCurrentPage(1)} >Default Sorting</option>
             <option value="popularity" >Sort By Popularity</option>
             <option value="ratingaverage">Sort By Average Rating</option>
             <option value="latest">Sort By Latest</option>
@@ -110,7 +119,7 @@ const Products = () => {
           }
           {Array.from({ length: Math.ceil(totalItems / perPage) }, (_, index) => (
             <li key={index} onClick={() => handlePageChange(index + 1)} >
-              <a href="#" className={`${currentPage === index + 1 && 'text-black border border-blue-300 bg-stone-700 '} hover:bg-stone-700 hover:text-white py-4 px-5 leading-tight bg-white border border-gray-300 `}>{index + 1}</a>
+              <button className={`${currentPage === index+1 && 'text-black border border-blue-300 bg-stone-700 '} hover:bg-stone-700 hover:text-white py-4 px-5 leading-tight bg-white border border-gray-300 outline-none`}>{index + 1}</button>
             </li>
           ))}
           {currentPage < Math.ceil(totalItems / perPage) ?

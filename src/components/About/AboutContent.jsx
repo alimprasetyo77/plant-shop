@@ -18,20 +18,20 @@ const AboutContent = () => {
           <div className="flex flex-col gap-y-4">
             <div className="w-16 h-px bg-[#FF5100]"></div>
             <h2 className="text-2xl font-semibold">We provide fresh and healthy plants for your space</h2>
-            <p className="font-medium text-black/70">Tincidunt ut pellentesque arcu molestie dolor, nunc feugiat sit mauris semper platea urna, sapien fermentum venenatis etiam enim ullamcorper phasellus tortor justo sapien faucibus in adipiscing risus adipiscing bibendum nec eget tincidunt sed.</p>
+            <p className="font-medium text-black/80">Tincidunt ut pellentesque arcu molestie dolor, nunc feugiat sit mauris semper platea urna, sapien fermentum venenatis etiam enim ullamcorper phasellus tortor justo sapien faucibus in adipiscing risus adipiscing bibendum nec eget tincidunt sed.</p>
           </div>
         </div>
         <div className="flex flex-col md:flex-row items-start gap-x-48 gap-y-4 md:gap-y-0">
           <div className="w-96">
-            <h3 className="font-bold text-black/70 uppercase tracking-wider">Our Story</h3>
+            <h3 className="font-bold text-black/80 uppercase tracking-wider whitespace-nowrap">Our Story</h3>
           </div>
           <div className="flex flex-col gap-y-4">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur omnis magnam expedita perspiciatis consequuntur ratione reiciendis iure placeat saepe ea, ex vitae, nobis soluta, nostrum et sit rerum facilis consectetur!</p>
-            <p>
+            <p className="font-medium text-black/80">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur omnis magnam expedita perspiciatis consequuntur ratione reiciendis iure placeat saepe ea, ex vitae, nobis soluta, nostrum et sit rerum facilis consectetur!</p>
+            <p className="font-medium text-black/80">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem recusandae ipsam adipisci assumenda magnam dignissimos dicta? Ex nam eaque, vitae harum, sunt corrupti expedita ipsam fugiat, veniam minus voluptatem soluta.
               Fuga vel tempore fugiat in asperiores est eveniet vero quaerat at, nam eos neque quae odio, repellendus quisquam vitae illo quam quos odit pariatur consequuntur voluptates? Deleniti dolore repudiandae ipsum?
             </p>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate eveniet reprehenderit officiis maxime quas ratione vero veritatis, optio commodi magnam in sint eum esse culpa quis ad, aperiam, at ipsam.</p>
+            <p className="font-medium text-black/80">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate eveniet reprehenderit officiis maxime quas ratione vero veritatis, optio commodi magnam in sint eum esse culpa quis ad, aperiam, at ipsam.</p>
             <div className="flex flex-col gap-y-4">
               <BsQuote className="text-[#FF5100] text-3xl md:text-4xl" />
               <p className="font-bold text-base md:text-lg">Massa aliquam montes, odio porttitor sit ac maecenas interdum ut tincidunt nisl erat quam eu natoque in nisl, lobortis sapien in nec ullamcorper vel.</p>

@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Link, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { BsFillBagPlusFill } from "react-icons/bs"
 import Button from "../Button"
 import data from '../../data.json'
@@ -11,6 +10,7 @@ import Card from "../Card"
 import RatingStar from '../RatingStar'
 import { useDispatch } from "react-redux"
 import { addToCart } from "../../features/CartSlice"
+import SuccessAlert from './SuccessAlert'
 
 const Product = () => {
   const { product } = useParams()
@@ -21,10 +21,12 @@ const Product = () => {
   const dispatch = useDispatch()
   const ref = useRef()
   const [length, setLength] = useState((localStorage.getItem('reviews')) ? JSON.parse(localStorage.getItem('reviews')).length : 0)
+  const [qty, setQty] = useState(1)
+  const [showAlert, setShowAlert] = useState(false)
+
   useEffect(() => {
     getDataByProductName()
     setShowImage(true)
-
   }, [])
   const getDataByProductName = () => {
     const result = data.Products.filter((data) => data.name === product)
@@ -52,19 +54,22 @@ const Product = () => {
   }
   const handleAddToCart = (items) => {
     dispatch(addToCart(items))
-  }
+    setShowAlert(true)
+ }
+
   return (
-    <div className="bg-slate-100/70 flex items-center justify-center min-h-screen py-5 md:py-14 ">
-      <div className="max-w-2xl md:max-w-7xl flex flex-col bg-white shadow-sm w-full h-auto p-4 md:p-20 gap-y-10 ">
-        <div className="flex flex-col md:flex-row justify-between ">
-          <div className="w-full xl:w-1/2 overflow-hidden">
-            <img src="http://source.unsplash.com/600x900?plants" alt="image" className={`${showImage ? 'opacity-100' : ' opacity-0 '} w-full h-[600px] md:h-[900px]  object-cover object-center transition-transform duration-300 ease-in-out`} ref={ref} />
+    <div className="bg-slate-100/70 flex items-center justify-center min-h-screen py-5 lg:py-14 ">
+      <div className="max-w-2xl md:max-w-7xl flex flex-col bg-white shadow-sm w-full h-auto p-4 md:p-20 gap-y-10 overflow-hidden">
+        {showAlert && <SuccessAlert title={dataProduct[0]?.name}/>}
+        <div className="flex flex-col lg:flex-row justify-between ">
+          <div className="w-full lg:w-1/2 overflow-hidden">
+            <img src="http://source.unsplash.com/600x900?plants" alt="image" className={`${showImage ? 'opacity-100' : ' opacity-0 '} w-full h-[600px] lg:h-[900px]  object-cover object-center transition-transform duration-300 ease-in-out`} ref={ref} />
             <div className="flex items-center gap-x-4 mt-8 ">
               <img src="http://source.unsplash.com/600x900?plants" alt="image" className="w-20 sm:w-28 h-20 sm:h-28 cursor-pointer opacity-80 hover:opacity-100" onClick={(e) => changeImage(e.target.src)} />
               <img src={dataProduct[0]?.source} alt="image" width={600} height={900} className="w-20 sm:w-28 h-20 sm:h-28 cursor-pointer opacity-80 hover:opacity-100" onClick={(e) => changeImage(e.target.src)} />
             </div>
           </div>
-          <div className="w-full md:w-1/2 px-px md:px-10 py-8 md:py-4 font-Roboto">
+          <div className="w-full lg:w-1/2 px-px md:px-10 py-8 md:py-4 font-Roboto">
             <div className="flex flex-col items-start gap-2 md:gap-5 ">
               <h3 className="text-black/80 text-sm md:text-base">{dataProduct[0]?.description}</h3>
               <h2 className="text-2xl font-medium">{dataProduct[0]?.name}</h2>
@@ -76,8 +81,14 @@ const Product = () => {
                 Recusandae cum molestiae corporis dolores reiciendis quasi minus ipsum optio aperiam.</p>
               <p className="text-[#575250] text-sm md:text-base">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil inventore ex, veritatis doloribus beatae officia. Adipisci, tenetur dolorum quis ullam temporibus modi fugit facilis voluptas recusandae delectus excepturi nostrum esse?</p>
               <div className="flex items-center gap-x-5 w-2/3">
-                <input type="number" className="border border-slate-300 w-14 h-10 text-slate-500 outline-none p-2" defaultValue={1} min={1} />
-                <Button className={'bg-[#FF5100] text-white w-full sm:text-sm text-xs'}>Add To Cart</Button>
+                <input type="number" className="border border-slate-300 w-14 h-10 text-slate-500 outline-none p-2" defaultValue={1} min={1} onChange={(e) => setQty(e.target.value)}/>
+                <Button className={'bg-[#FF5100] text-white w-full sm:text-sm text-xs'} onClick={() => handleAddToCart({
+                   id: dataProduct[0].productId,
+                   name: dataProduct[0].name,
+                   price: dataProduct[0].price,
+                   image: dataProduct[0].source,
+                   qty: +qty,
+                })}>Add To Cart</Button>
               </div>
               <div className="w-full bg-black/20 h-px"></div>
               <p className=" text-sm text-[#575250]"><span className="font-semibold">Categories</span> : {dataProduct[0]?.description}</p>
@@ -98,13 +109,13 @@ const Product = () => {
         {/* Related products */}
         <div className="py-10 font-Roboto">
           <h1 className="text-4xl font-bold">Related products</h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-4 gap-x-8 py-8">
-            {data.Products.slice(0, 3).map((data, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-4 gap-x-8 py-8">
+            {data.Products.slice(27, 30).map((data, index) => (
               <Card key={index} className={'relative'} >
                 <div className="group">
-                  <Link to={`/product/${data.name}`}>
+                  <a href={`/product/${data.name}`}>
                     <Card.thumbnail src={data.source} className={`cursor-pointer w-full h-96 object-cover `} />
-                  </Link>
+                  </a>
                   {/* Cart Icon */}
                   <button className={`group-hover:opacity-100  opacity-0 shadow-2xl absolute top-2 right-2 w-9 h-9 flex items-center justify-center bg-white rounded-full ease-in-out  transition-all duration-300 cursor-pointer `} onClick={() => handleAddToCart({
                     id: data.productId,
