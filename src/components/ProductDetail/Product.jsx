@@ -102,9 +102,9 @@ const Product = () => {
             {data.Products.slice(0, 3).map((data, index) => (
               <Card key={index} className={'relative'} >
                 <div className="group">
-                  <Link to={`/product/${data.name}`}>
+                  <a href={`/product/${data.name}`}>
                     <Card.thumbnail src={data.source} className={`cursor-pointer w-full h-96 object-cover `} />
-                  </Link>
+                  </a>
                   {/* Cart Icon */}
                   <button className={`group-hover:opacity-100  opacity-0 shadow-2xl absolute top-2 right-2 w-9 h-9 flex items-center justify-center bg-white rounded-full ease-in-out  transition-all duration-300 cursor-pointer `} onClick={() => handleAddToCart({
                     id: data.productId,
