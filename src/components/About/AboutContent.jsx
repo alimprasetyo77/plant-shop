@@ -21,7 +21,7 @@ const AboutContent = () => {
             <p className="font-medium text-black/70">Tincidunt ut pellentesque arcu molestie dolor, nunc feugiat sit mauris semper platea urna, sapien fermentum venenatis etiam enim ullamcorper phasellus tortor justo sapien faucibus in adipiscing risus adipiscing bibendum nec eget tincidunt sed.</p>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row items-start gap-x-48 gap-y-4 md:gap-y-0">
+        <div className="flex flex-col md:flex-row items-start gap-x-48 gap-y-4 md:gap-y-0 ">
           <div className="w-96">
             <h3 className="font-bold text-black/70 uppercase tracking-wider">Our Story</h3>
           </div>
@@ -45,16 +45,18 @@ const AboutContent = () => {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <img src={image1} alt="image" className="w-full cursor-pointer" onClick={() => setShowImage({ bool: true, value: 1 })} />
-          <img src={image2} alt="image" className="w-full h-full cursor-pointer" onClick={() => setShowImage({ bool: true, value: 2 })} />
-          <img src={image3} alt="image" className="w-full cursor-pointer" onClick={() => setShowImage({ bool: true, value: 3 })} />
-          <img src={image4} alt="image" className="w-full cursor-pointer" onClick={() => setShowImage({ bool: true, value: 4 })} />
-          <img src={image5} alt="image" className="w-full cursor-pointer" onClick={() => setShowImage({ bool: true, value: 5 })} />
-          <img src={image6} alt="image" className="w-full cursor-pointer" onClick={() => setShowImage({ bool: true, value: 6 })} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 ">
+          <img src={image1} alt="image" className="w-full cursor-pointer" onClick={() => setShowImage({ bool: true, value: 1, currentPosition: 0 })} />
+          <img src={image2} alt="image" className="w-full h-full cursor-pointer" onClick={() => setShowImage({ bool: true, value: 2, currentPosition: 1350 })} />
+          <img src={image3} alt="image" className="w-full cursor-pointer" onClick={() => setShowImage({ bool: true, value: 3, currentPosition: 2700 })} />
+          <img src={image4} alt="image" className="w-full cursor-pointer" onClick={() => setShowImage({ bool: true, value: 4, currentPosition: 4050 })} />
+          <img src={image5} alt="image" className="w-full cursor-pointer" onClick={() => setShowImage({ bool: true, value: 5, currentPosition: 5400 })} />
+          <img src={image6} alt="image" className="w-full cursor-pointer" onClick={() => setShowImage({ bool: true, value: 6, currentPosition: 6750 })} />
         </div>
       </div>
-      {showImage.bool === true ? <ImageSlider setShowImage={setShowImage} showImage={showImage} /> : null}
+      <div className={`${showImage.bool === true ? 'opacity-100 z-[99] ' : 'opacity-0 -z-[5] '} absolute duration-500 ease-in-out`}>
+        <ImageSlider setShowImage={setShowImage} showImage={showImage} />
+      </div>
     </div>
   )
 }

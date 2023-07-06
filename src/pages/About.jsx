@@ -15,7 +15,7 @@ const About = () => {
     dispatch(setActivePage('about'))
   }
   return (
-    <div>
+    <div className='overflow-x-hidden'>
       <Header />
       <AboutContent />
       <Footer />
